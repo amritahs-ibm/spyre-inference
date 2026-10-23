@@ -724,7 +724,9 @@ class TorchSpyreModelRunner(GPUModelRunner):
         install_head_pad_weight_loader(
             model_loader, self.model_config.hf_text_config, self.model_config
         )
-        install_mlp_pad_weight_loader(model_loader, self.model_config.hf_text_config)
+        install_mlp_pad_weight_loader(
+            model_loader, self.model_config.hf_text_config, self.model_config
+        )
         # Keep Attention module buffers (_k_scale, _v_scale, etc.) on CPU.
         # Note: This _apply cannot reside in SpyreAttentionImpl, as it is not
         # an nn.Module, but just the attention implementation.
